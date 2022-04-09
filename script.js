@@ -12,4 +12,15 @@ function createGrid() {
     }
 }
 
+function colorSquare(e) {
+    e.target.style.backgroundColor = 'black';
+}
+
+function colorGrid() {
+    const squares = document.querySelectorAll('.square');
+    console.log(squares);
+    squares.forEach(square => square.addEventListener('mouseover', colorSquare));
+}
+
 createGrid();
+colorGrid();
