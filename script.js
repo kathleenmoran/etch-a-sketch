@@ -1,9 +1,9 @@
-function createGrid() {
+function createGrid(dimension) {
     const grid = document.querySelector('.grid');
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < dimension; i++) {
         const gridRow = document.createElement('div')
         gridRow.classList.add('grid-row')
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < dimension; i++) {
             const square = document.createElement('div')
             square.classList.add('square');
             gridRow.appendChild(square);
@@ -16,11 +16,33 @@ function colorSquare(e) {
     e.target.style.backgroundColor = 'black';
 }
 
-function colorGrid() {
-    const squares = document.querySelectorAll('.square');
-    console.log(squares);
-    squares.forEach(square => square.addEventListener('mouseover', colorSquare));
+function resetGrid(e) {
+    deleteGrid();
+    const newGridDimension = parseInt(prompt('Please enter a new grid dimension between 10 and 100 inclusive.'));
+    if (newGridDimension >= 10 && newGridDimension <= 100) {
+        createGrid(newGridDimension);
+        colorGrid();
+    }
+    else {
+        alert('Invalid grid dimension.');
+        resetGrid(e);
+    }
 }
 
-createGrid();
+function deleteGrid() {
+    const grid = document.querySelector('.grid');
+    while (grid.firstChild) {
+        grid.removeChild(grid.lastChild);
+    }
+}
+
+function colorGrid() {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => square.addEventListener('mouseover', colorSquare));
+
+    const clearButton = document.querySelector('.clear-button');
+    clearButton.addEventListener('click', resetGrid);
+}
+
+createGrid(16);
 colorGrid();
