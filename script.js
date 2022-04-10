@@ -54,8 +54,7 @@ function resetGrid(e) {
     deleteGrid();
     const newGridDimension = parseInt(prompt('Please enter a new grid dimension between 10 and 100 inclusive.'));
     if (newGridDimension >= 10 && newGridDimension <= 100) {
-        createGrid(newGridDimension);
-        colorGrid();
+        colorGrid(newGridDimension);
     }
     else {
         alert('Invalid grid dimension.');
@@ -70,8 +69,9 @@ function deleteGrid() {
     }
 }
 
-function colorGrid() {
-    createGrid(16);
+function colorGrid(dimension) {
+    deleteGrid();
+    createGrid(dimension);
     colorBlack();
 
     const clearButton = document.querySelector('.clear-button');
@@ -81,4 +81,4 @@ function colorGrid() {
     colorButton.addEventListener('click', switchColor);
 }
 
-colorGrid();
+colorGrid(16);
