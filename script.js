@@ -71,6 +71,7 @@ function deleteGrid() {
 }
 
 function colorGrid() {
+    createGrid(16);
     colorBlack();
 
     const clearButton = document.querySelector('.clear-button');
@@ -80,5 +81,4 @@ function colorGrid() {
     colorButton.addEventListener('click', switchColor);
 }
 
-createGrid(16);
 colorGrid();
