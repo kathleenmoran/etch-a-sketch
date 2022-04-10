@@ -41,6 +41,8 @@ button {
     font-weight: 900;
     border-radius: 0px;
     margin: 40px;
+    font-family: 'Aldrich', sans-serif;
+    width: 200px;
 }
 
 button:hover {

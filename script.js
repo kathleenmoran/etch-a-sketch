@@ -12,8 +12,42 @@ function createGrid(dimension) {
     }
 }
 
-function colorSquare(e) {
+function colorSquareBlack(e) {
     e.target.style.backgroundColor = 'black';
+}
+
+function colorBlack() {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => square.removeEventListener('mouseover', colorSquareRainbow));
+    squares.forEach(square => square.addEventListener('mouseover', colorSquareBlack));
+}
+
+function colorRainbow() {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => square.removeEventListener('mouseover', colorSquareBlack));
+    squares.forEach(square => square.addEventListener('mouseover', colorSquareRainbow));
+}
+
+function colorSquareRainbow(e) {
+    e.target.style.backgroundColor = generateRandomColor();
+}
+
+function generateRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r},${g},${b})`;
+}
+
+function switchColor(e) {
+    if (e.target.textContent === 'COLOR') {
+        colorRainbow();
+        e.target.textContent = 'BLACK';
+    }
+    else {
+        colorBlack();
+        e.target.textContent = 'COLOR';
+    }
 }
 
 function resetGrid(e) {
@@ -37,11 +71,13 @@ function deleteGrid() {
 }
 
 function colorGrid() {
-    const squares = document.querySelectorAll('.square');
-    squares.forEach(square => square.addEventListener('mouseover', colorSquare));
+    colorBlack();
 
     const clearButton = document.querySelector('.clear-button');
     clearButton.addEventListener('click', resetGrid);
+
+    const colorButton = document.querySelector('.color-button');
+    colorButton.addEventListener('click', switchColor);
 }
 
 createGrid(16);
