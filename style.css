@@ -1,5 +1,6 @@
 .square {
-    border: 1px solid black;
+    border: 1px solid #D3D3D3;
+    background-color: white;
     height: 100%;
 }
 
@@ -11,13 +12,44 @@
 }
 
 .grid {
-    width: 960px;
-    height: 960px;
+    width: 800px;
+    height: 800px;
     display: flex;
+}
+
+h1 {
+    margin: 40px;
 }
 
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #D3D3D3;
+    font-family: 'Aldrich', sans-serif;
+    color: white;
+    font-size: 40px;
+    min-height: 100vh;
+}
+
+button {
+    border: 5px solid white;
+    color: white;
+    background-color: #D3D3D3;
+    padding: 10px;
+    font-size: 40px;
+    font-weight: 900;
+    border-radius: 0px;
+    margin: 40px;
+}
+
+button:hover {
+    border-color: black;
+    color: black;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 10px;
+    font-size: 15px;
 }
